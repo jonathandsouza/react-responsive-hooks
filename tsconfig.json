@@ -18,9 +18,10 @@
 		"baseUrl": "./",
 		"paths": {
 			"*": ["src/*"]
-		}
+		},
+		"types": ["react", "react-dom", "node", "jest"]
 	},
-	"include": ["src/**/*"], // Add at least one input file or directory
+	"include": ["src/**/*", "_tests_"], // Add at least one input file or directory
 	"exclude": ["node_modules", "dist"],
 	"peerDependencies": {
 		"react": "^17.0.0 || ^18.0.0",
