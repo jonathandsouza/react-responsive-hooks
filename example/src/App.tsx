@@ -1,35 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useBreakpoint } from '@react-responsive-hooks/breakpoint';
 
 function App() {
-  const [count, setCount] = useState(0)
+	const { smallMobile, mobile, tablet, desktop, largeDesktop } =
+		useBreakpoint();
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	return (
+		<>
+			<h1>React responsive hooks: Breakpoints</h1>
+
+			{smallMobile && <h1>Small mobile</h1>}
+
+			{tablet && <h1>Tablet</h1>}
+
+			{desktop && <h1>Desktop</h1>}
+
+			{largeDesktop && <h1>Large desktop</h1>}
+
+			{mobile && <h1>Mobile</h1>}
+		</>
+	);
 }
 
-export default App
+export default App;
