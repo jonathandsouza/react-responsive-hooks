@@ -1,7 +1,8 @@
-import React from 'react';
+import { ViewportProvider, useViewport } from 'viewport';
 
-const MyComponent: React.FC = () => {
-	return <div>Hello, world!</div>;
+export const ResponsiveHooks = {
+	Provider: ViewportProvider,
+	useViewport: useViewport,
 };
 
-export default MyComponent;
+export { useViewport };

@@ -97,7 +97,7 @@ export function ViewportProvider(props: ComponentProps) {
 
 // #region hooks
 
-function useViewport() {
+export function useViewport() {
 	const context = React.useContext(viewportContext);
 	if (!context) {
 		throw new Error('useViewport must be used within a ViewportProvider');
