@@ -3,13 +3,16 @@
 	"version": "0.0.1",
 	"description": "## under construction/In progress My dude.",
 	"main": "index.js",
-	"workspaces": {
-		"example": "example",
-		"package": "package/*"
-	},
+	"workspaces": [
+		"packages/*",
+		"example"
+	],
 	"dependencies": {},
 	"devDependencies": {},
-	"scripts": {},
+	"scripts": {
+		"demo": "npm run dev --workspaces --if-present",
+		"build": "npm run build  --workspaces --if-present"
+	},
 	"keywords": [
 		"react",
 		"breakpoints",
