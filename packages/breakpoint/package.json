@@ -5,6 +5,9 @@
 	"main": "dist/main.js",
 	"module": "dist/breakpoint.js",
 	"types": "dist/main.d.ts",
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc --p ./tsconfig.build.json && vite build",
