@@ -9,7 +9,7 @@ const DEFAULT_VIEWPORT_LIMITS = {
 	largeDesktop: 1280,
 };
 
-type ViewportLimits = {
+type BreakpointLimits = {
 	smallMobile: number;
 	mobile: number;
 	tablet: number;
@@ -17,16 +17,16 @@ type ViewportLimits = {
 	largeDesktop: number;
 };
 
-type ViewportValidity =
+type BreakpointValidity =
 	| {
-			[K in keyof ViewportLimits]: boolean;
+			[K in keyof BreakpointLimits]: boolean;
 	  }
 	| null;
 
 type ComponentProps = {
 	children: React.ReactNode;
 } & Omit<
-	ViewportLimits,
+	BreakpointLimits,
 	'smallMobile' | 'mobile' | 'tablet' | 'desktop' | 'largeDesktop'
 >;
 
@@ -34,14 +34,14 @@ type ComponentProps = {
 
 // #region Context & Providers
 
-const viewportContext = React.createContext<ViewportValidity>(null);
+const breakpointContext = React.createContext<BreakpointValidity>(null);
 
-function compileViewportValidity(
-	viewportLimits: ViewportLimits = DEFAULT_VIEWPORT_LIMITS
+function compileBreakpointValidity(
+	viewportLimits: BreakpointLimits = DEFAULT_VIEWPORT_LIMITS
 ) {
 	const width = window.innerWidth;
 
-	const viewportValidity: ViewportValidity = {
+	const viewportValidity: BreakpointValidity = {
 		smallMobile: width < viewportLimits.smallMobile,
 		mobile: width >= viewportLimits.mobile && width < viewportLimits.tablet,
 		tablet:
@@ -55,12 +55,12 @@ function compileViewportValidity(
 	return viewportValidity;
 }
 
-export function ViewportProvider(props: ComponentProps) {
+export function BreakpointProvider(props: ComponentProps) {
 	const { children, ...limits } = props;
 
 	const normalizedLimits = Object.assign(DEFAULT_VIEWPORT_LIMITS, limits);
 
-	const [viewport, setViewport] = React.useState<ViewportValidity>({
+	const [viewport, setBreakpoint] = React.useState<BreakpointValidity>({
 		smallMobile: false,
 		mobile: false,
 		tablet: false,
@@ -72,7 +72,7 @@ export function ViewportProvider(props: ComponentProps) {
 
 	useEffect(() => {
 		const handleWindowResize = () => {
-			setViewport(compileViewportValidity(normalizedLimits));
+			setBreakpoint(compileBreakpointValidity(normalizedLimits));
 		};
 
 		window.addEventListener('resize', handleWindowResize);
@@ -88,19 +88,19 @@ export function ViewportProvider(props: ComponentProps) {
 	]);
 
 	return (
-		<viewportContext.Provider value={viewport}>
+		<breakpointContext.Provider value={viewport}>
 			{children}
-		</viewportContext.Provider>
+		</breakpointContext.Provider>
 	);
 }
 // #endregion
 
 // #region hooks
 
-export function useViewport() {
-	const context = React.useContext(viewportContext);
+export function useBreakpoint() {
+	const context = React.useContext(breakpointContext);
 	if (!context) {
-		throw new Error('useViewport must be used within a ViewportProvider');
+		throw new Error('useBreakpoint must be used within a ViewportProvider');
 	}
 	return context;
 }
