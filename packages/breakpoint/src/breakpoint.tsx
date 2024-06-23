@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 
 const DEFAULT_VIEWPORT_LIMITS = {
 	smallMobile: 320,
-	mobile: 490,
+	mobile: 480,
 	tablet: 768,
 	desktop: 1024,
 	largeDesktop: 1280,
