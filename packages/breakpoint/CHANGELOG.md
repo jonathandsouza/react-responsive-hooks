@@ -1,5 +1,11 @@
 # @react-responsive-hooks/breakpoint
 
+## 0.0.5
+
+### Patch Changes
+
+-   31989df: fixes
+
 ## 0.0.4
 
 ### Patch Changes
