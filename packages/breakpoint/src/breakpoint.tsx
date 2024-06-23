@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
-// #region types
+// #region constants
+
 const DEFAULT_VIEWPORT_LIMITS = {
 	smallMobile: 320,
 	mobile: 480,
@@ -9,7 +10,11 @@ const DEFAULT_VIEWPORT_LIMITS = {
 	largeDesktop: 1280,
 };
 
-type BreakpointLimits = {
+// #endregion
+
+// #region types
+
+export type BreakpointLimits = {
 	smallMobile: number;
 	mobile: number;
 	tablet: number;
@@ -17,14 +22,14 @@ type BreakpointLimits = {
 	largeDesktop: number;
 };
 
-type BreakpointValidity =
+export type BreakpointValidity =
 	| {
 			[K in keyof BreakpointLimits]: boolean;
 			// eslint-disable-next-line no-mixed-spaces-and-tabs
 	  }
 	| null;
 
-type ComponentProps = {
+export type ComponentProps = {
 	children: React.ReactNode;
 } & Omit<
 	BreakpointLimits,

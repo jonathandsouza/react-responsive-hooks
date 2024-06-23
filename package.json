@@ -3,15 +3,13 @@
 	"version": "0.0.1",
 	"description": "## under construction/In progress My dude.",
 	"main": "index.js",
-	"workspaces": [
-		"packages/*",
-		"example"
-	],
-	"dependencies": {},
-	"devDependencies": {},
+	"type": "module",
 	"scripts": {
-		"demo": "npm run dev --workspaces --if-present",
-		"build": "npm run build  --workspaces --if-present"
+		"build": "node build.js"
+	},
+	"devDependencies": {
+		"eslint": "^9.5.0",
+		"tsup": "^8.1.0"
 	},
 	"keywords": [
 		"react",
