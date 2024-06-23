@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 // #region constants
 
 const DEFAULT_VIEWPORT_LIMITS = {
-	smallMobile: 320,
+	smallMobile: 325,
 	mobile: 480,
 	tablet: 768,
 	desktop: 1024,
