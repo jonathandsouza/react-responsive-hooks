@@ -28,13 +28,6 @@ async function build(path) {
     });
     console.log(`Built ${path}/dist/index.mjs`);
 
-    // tsup is used to emit d.ts files only (esbuild can't do that).
-    //
-    // Notes:
-    // 1. Emitting d.ts files is super slow for whatever reason.
-    // 2. It could have fully replaced esbuild (as it uses that internally),
-    //    but at the moment its esbuild version is somewhat outdated.
-    //    It’s also harder to configure and esbuild docs are more thorough.
     await tsup.build({
         entry: [file],
         format: ['cjs', 'esm'],
