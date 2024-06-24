@@ -1,4 +1,4 @@
-# @react-responsive-hooks/breakpoint
+# @react-responsive/breakpoint
 
 ## 0.0.5
 

@@ -1,4 +1,4 @@
-# react-responsive-hooks
+# react-responsive
 
 ## under construction/In progress My dude. 
 

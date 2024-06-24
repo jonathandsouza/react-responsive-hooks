@@ -1,4 +1,4 @@
-import { useBreakpoint } from '@react-responsive-hooks/breakpoint';
+import { useBreakpoint } from '@react-responsive/breakpoint';
 
 function App() {
 	const { smallMobile, mobile, tablet, desktop, largeDesktop } =
