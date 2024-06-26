@@ -49,7 +49,7 @@ export type ComponentProps = {
 
 // #endregion
 
-// #region Context & Providers
+// #region context & providers
 
 const breakpointContext = React.createContext<BreakpointValidity>(
 	DEFAULT_VIEWPORT_VALIDITY
@@ -62,16 +62,21 @@ function compileBreakpointValidity(
 
 	const viewportValidity: BreakpointValidity = {
 		isSmallMobile: width < viewportLimits.smallMobile,
+
 		isMobile:
-			width >= viewportLimits.mobile && width < viewportLimits.tablet,
+			width >= viewportLimits.smallMobile &&
+			width < viewportLimits.mobile,
+
 		isTablet:
-			width >= viewportLimits.tablet && width < viewportLimits.desktop,
+			width >= viewportLimits.mobile && width < viewportLimits.tablet,
+
 		isDesktop:
-			width >= viewportLimits.desktop &&
-			width < viewportLimits.largeDesktop,
+			width >= viewportLimits.tablet && width < viewportLimits.desktop,
+
 		isLargeDesktop:
 			width >= viewportLimits.desktop &&
 			width < viewportLimits.largeDesktop,
+
 		isExtraLargeDesktop: width >= viewportLimits.largeDesktop,
 	};
 
