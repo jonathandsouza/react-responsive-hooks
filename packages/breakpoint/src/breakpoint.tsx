@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 // #region constants
 
-const DEFAULT_VIEWPORT_LIMITS = {
+export const DEFAULT_VIEWPORT_LIMITS = {
 	smallMobile: 480,
 	mobile: 768,
 	tablet: 992,
@@ -162,31 +162,6 @@ function ExtraLargeDesktop(props: { children: React.ReactNode }) {
 	return <InViewport size="isExtraLargeDesktop">{props.children}</InViewport>;
 }
 
-function Test() {
-	return (
-		<Breakpoint.Provider>
-			<Breakpoint.SmallMobile>
-				<div>SmallMobile</div>
-			</Breakpoint.SmallMobile>
-			<Breakpoint.Mobile>
-				<div>Mobile</div>
-			</Breakpoint.Mobile>
-			<Breakpoint.Tablet>
-				<div>Tablet</div>
-			</Breakpoint.Tablet>
-			<Breakpoint.Desktop>
-				<div>Desktop</div>
-			</Breakpoint.Desktop>
-			<Breakpoint.LargeDesktop>
-				<div>LargeDesktop</div>
-			</Breakpoint.LargeDesktop>
-			<Breakpoint.ExtraLargeDesktop>
-				<div>ExtraLargeDesktop</div>
-			</Breakpoint.ExtraLargeDesktop>
-		</Breakpoint.Provider>
-	);
-}
-
 // #endregion
 
 // #region exports
@@ -200,7 +175,6 @@ export const Breakpoint = {
 	LargeDesktop,
 	ExtraLargeDesktop,
 	useBreakpoint,
-	Test,
 };
 
 export { useBreakpoint };

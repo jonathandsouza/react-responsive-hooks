@@ -1,30 +1,51 @@
-import { fn } from '@storybook/test';
-import { Breakpoint } from './breakpoint';
+import { Breakpoint, DEFAULT_VIEWPORT_LIMITS } from './breakpoint';
+import { BreakpointLimits } from '../dist';
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
+function Test(props: Partial<BreakpointLimits>) {
+	return (
+		<Breakpoint.Provider {...props}>
+			<Breakpoint.SmallMobile>
+				<div>SmallMobile</div>
+			</Breakpoint.SmallMobile>
+			<Breakpoint.Mobile>
+				<div>Mobile</div>
+			</Breakpoint.Mobile>
+			<Breakpoint.Tablet>
+				<div>Tablet</div>
+			</Breakpoint.Tablet>
+			<Breakpoint.Desktop>
+				<div>Desktop</div>
+			</Breakpoint.Desktop>
+			<Breakpoint.LargeDesktop>
+				<div>LargeDesktop</div>
+			</Breakpoint.LargeDesktop>
+			<Breakpoint.ExtraLargeDesktop>
+				<div>ExtraLargeDesktop</div>
+			</Breakpoint.ExtraLargeDesktop>
+		</Breakpoint.Provider>
+	);
+}
+
 export default {
-	title: 'Breakpoint/Test',
+	title: 'Breakpoint/InView',
 
-	component: Breakpoint.Test,
+	component: Test,
 
 	parameters: {
-		// Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
 		layout: 'centered',
 	},
-	// This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-	tags: ['autodocs'],
-	// More on argTypes: https://storybook.js.org/docs/api/argtypes
+
 	argTypes: {
-		backgroundColor: { control: 'color' },
+		smallMobile: { control: 'number' },
+		mobile: { control: 'number' },
+		tablet: { control: 'number' },
+		desktop: { control: 'number' },
+		largeDesktop: { control: 'number' },
 	},
-	// Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
-	args: { onClick: fn() },
 };
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary = {
 	args: {
-		primary: true,
-		label: 'Button',
+		...DEFAULT_VIEWPORT_LIMITS,
 	},
 };
