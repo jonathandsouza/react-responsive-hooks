@@ -1,5 +1,5 @@
 {
-	"include": ["packages", "apps"],
+	"include": ["packages", "apps", "stories/breakpoint.stories.tsx"],
 	"compilerOptions": {
 		"allowJs": false,
 		"allowSyntheticDefaultImports": true,

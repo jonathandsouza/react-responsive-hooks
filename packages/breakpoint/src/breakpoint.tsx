@@ -118,11 +118,84 @@ function useBreakpoint() {
 
 // #endregion
 
+// #region components
+
+function InViewport(props: {
+	size: keyof BreakpointValidity;
+	children: React.ReactNode;
+}) {
+	const viewport = useBreakpoint();
+
+	if (viewport[props.size]) {
+		return <>{props.children}</>;
+	}
+
+	return null;
+}
+
+function SmallMobile(props: { children: React.ReactNode }) {
+	return <InViewport size="isSmallMobile">{props.children}</InViewport>;
+}
+
+function Mobile(props: { children: React.ReactNode }) {
+	return <InViewport size="isMobile">{props.children}</InViewport>;
+}
+
+function Tablet(props: { children: React.ReactNode }) {
+	return <InViewport size="isTablet">{props.children}</InViewport>;
+}
+
+function Desktop(props: { children: React.ReactNode }) {
+	return <InViewport size="isDesktop">{props.children}</InViewport>;
+}
+
+function LargeDesktop(props: { children: React.ReactNode }) {
+	return <InViewport size="isLargeDesktop">{props.children}</InViewport>;
+}
+
+function ExtraLargeDesktop(props: { children: React.ReactNode }) {
+	return <InViewport size="isExtraLargeDesktop">{props.children}</InViewport>;
+}
+
+function Test() {
+	return (
+		<Breakpoint.Provider>
+			<Breakpoint.SmallMobile>
+				<div>SmallMobile</div>
+			</Breakpoint.SmallMobile>
+			<Breakpoint.Mobile>
+				<div>Mobile</div>
+			</Breakpoint.Mobile>
+			<Breakpoint.Tablet>
+				<div>Tablet</div>
+			</Breakpoint.Tablet>
+			<Breakpoint.Desktop>
+				<div>Desktop</div>
+			</Breakpoint.Desktop>
+			<Breakpoint.LargeDesktop>
+				<div>LargeDesktop</div>
+			</Breakpoint.LargeDesktop>
+			<Breakpoint.ExtraLargeDesktop>
+				<div>ExtraLargeDesktop</div>
+			</Breakpoint.ExtraLargeDesktop>
+		</Breakpoint.Provider>
+	);
+}
+
+// #endregion
+
 // #region exports
 
 export const Breakpoint = {
 	Provider: BreakpointProvider,
+	SmallMobile,
+	Mobile,
+	Tablet,
+	Desktop,
+	LargeDesktop,
+	ExtraLargeDesktop,
 	useBreakpoint,
+	Test,
 };
 
 export { useBreakpoint };
